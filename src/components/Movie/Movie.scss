@@ -1,0 +1,40 @@
+.movie{
+    width: 185px;
+    z-index: 100;
+    color: white;
+    margin-top: 3em;
+}
+
+#vote-average {
+    margin-left: 155px;
+    margin-top: -9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color:black;
+    border: rgb(27, 175, 177) solid 5px;
+    color: white;
+    z-index: 100;
+
+}
+
+
+h3{
+    font-size: 15px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+}
+
+.img-movie{
+    height: 274px;
+}
+
+.button{
+    background-color: rgb(27, 175, 177);
+}
