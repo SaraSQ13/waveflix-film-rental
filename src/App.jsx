@@ -1,6 +1,18 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.scss'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Routes,
+  Router,
+  BrowserRouter,
+  Link,
+  createRoutesFromElements,
+  Navigate,
+} from "react-router-dom";
+import { Home } from './containers/Home/Home'
+import { Header } from './components/Header/Header';
 
 function App() {
   const [count, setCount] = useState(0)
