@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navigate, NavLink} from "react-router-dom"
+import SearchBar from '../SearchBar/SearchBar';
 //logo de la app
 import "./NavBar.scss"
 
@@ -7,13 +8,10 @@ export default function NavBar(){
     let activeClassName = "active-link";
     return (
         <div>
-        <nav className="navbar navbar-dark bg-dark fixed-top">
+        <nav className="navbar navbar-dark  fixed-top">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">WAVEFLIX</a>
-    <form className="d-flex mt-3" role="search">
-          <input className="form-control me-2" type="search" placeholder="Película, género, actor" aria-label="Search"/>
-          <button className="button" type="submit">Search</button>
-        </form>
+   <SearchBar/>
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -28,26 +26,23 @@ export default function NavBar(){
             <a className="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
+            <a className="nav-link" href="#">Alquileres</a>
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Iniciar sesión
             </a>
             <ul className="dropdown-menu dropdown-menu-dark">
-              <li><a className="dropdown-item" href="#">Action</a></li>
-              <li><a className="dropdown-item" href="#">Another action</a></li>
+              <li><a className="dropdown-item" href="#">Login</a></li>
+              <li><a className="dropdown-item" href="#">Regístrate</a></li>
               <li>
                 <hr className="dropdown-divider"/>
               </li>
-              <li><a className="dropdown-item" href="#">Something else here</a></li>
+              <li><a className="dropdown-item" href="#">Admin</a></li>
             </ul>
           </li>
         </ul>
-        <form className="d-flex mt-3" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-success" type="submit">Search</button>
-        </form>
+        <SearchBar/>
       </div>
     </div>
   </div>

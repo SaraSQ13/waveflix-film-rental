@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import "./Home.scss"
 import Movie from '../../components/Movie/Movie'
 import MoviePages from '../../components/MoviePages/MoviePages'
+import SearchBar from '../../components/SearchBar/SearchBar'
 
 
 export function Home(){
@@ -14,7 +15,7 @@ export function Home(){
 
 
     useEffect(()=>{
-        getPopularMovies(pages)
+        getPopularMovies(page)
     }, [page])
 
     
@@ -50,6 +51,7 @@ export function Home(){
    <span></span>
 </div>
         <h1 className="h1 mt-5 mb-5 pb-5">Movie LIST</h1>
+        <SearchBar className= "bar"/>
         <MoviePages page={page} pages={pages} setPage={setPage}/>
         <div className="movies-list">
         {movies.length>0 &&
