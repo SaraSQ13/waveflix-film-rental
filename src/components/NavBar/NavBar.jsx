@@ -10,7 +10,7 @@ export default function NavBar(){
         <div>
         <nav className="navbar navbar-dark  fixed-top">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">WAVEFLIX</a>
+    <a className="navbar-brand" href="/">WAVEFLIX</a>
    <SearchBar/>
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@ export default function NavBar(){
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <a className="nav-link active" aria-current="page" href="/">Home</a>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#">Alquileres</a>
@@ -33,7 +33,7 @@ export default function NavBar(){
               Iniciar sesión
             </a>
             <ul className="dropdown-menu dropdown-menu-dark">
-              <li><a className="dropdown-item" href="#">Login</a></li>
+              <li><NavLink to="/login" className="dropdown-item" href="#">Login</NavLink></li>
               <li><a className="dropdown-item" href="#">Regístrate</a></li>
               <li>
                 <hr className="dropdown-divider"/>

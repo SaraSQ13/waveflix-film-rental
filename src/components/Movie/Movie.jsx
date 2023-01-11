@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from 'prop-types'
 import { useNavigate } from "react-router-dom";
 import "./Movie.scss"
@@ -9,6 +9,7 @@ function Movie ({movie}){
     const selectMovie = (movie) => {
         navigate(`/movie/${movie.id}`);
     }
+  
 
     return (
     
@@ -18,7 +19,7 @@ function Movie ({movie}){
     <img className= "img-movie" src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt="" />
     </a>
     <h3>{movie.title}</h3>
-    <p>{movie.release_date}</p>
+            <button className="button" onClick={()=>selectMovie(movie)}>Ver más</button>
             <button className="button" onClick={()=>selectMovie(movie)}>Alquilar</button>
         </div>
     )

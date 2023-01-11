@@ -13,7 +13,8 @@ import {
 } from "react-router-dom";
 import { Home } from './containers/Home/Home'
 import { Header } from './components/Header/Header';
-
+import Login from './containers/Login/Login';
+import Admin from './containers/Admin/Admin';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -24,6 +25,8 @@ function App() {
       <Routes>
       <Route path="/" element={<Navigate to= "/movie"/>}/>
       <Route path="/movie" element={<Home/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/admin" element={<Admin/>}/>
       </Routes>
       </BrowserRouter>
        
