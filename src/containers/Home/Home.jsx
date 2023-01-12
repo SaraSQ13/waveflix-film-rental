@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { FilmRentalService } from '../../services/FilmRentalService'
+import { FilmRentalService } from '../../_services/FilmRentalService'
 import { useNavigate } from 'react-router-dom'
 import "./Home.scss"
 import Movie from '../../components/Movie/Movie'
