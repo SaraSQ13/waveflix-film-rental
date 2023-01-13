@@ -6,8 +6,8 @@ import "./Movie.scss"
 function Movie ({movie}){
     const navigate = useNavigate();
 
-    const selectMovie = (movie) => {
-        navigate(`/movie/${movie.id}`);
+    const getSingleMovie = (id) => {
+        navigate(`/movie/${id}`);
     }
   
 
@@ -19,8 +19,8 @@ function Movie ({movie}){
     <img className= "img-movie" src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt="" />
     </a>
     <h3>{movie.title}</h3>
-            <button className="button" onClick={()=>selectMovie(movie)}>Ver más</button>
-            <button className="button" onClick={()=>selectMovie(movie)}>Alquilar</button>
+            <button className="button" onClick={()=>getSingleMovie(movie.id)}>Ver más</button>
+            <button className="button" onClick={()=>getSingleMovie(movie.id)}>Alquilar</button>
         </div>
     )
 }

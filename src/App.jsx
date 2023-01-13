@@ -15,6 +15,7 @@ import { Home } from './containers/Home/Home'
 import { Header } from './components/Header/Header';
 import Login from './containers/Login/Login';
 import Admin from './containers/Admin/Admin';
+import MovieDetail from './containers/MovieDetail/MovieDetail';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -25,6 +26,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Navigate to= "/movie"/>}/>
       <Route path="/movie" element={<Home/>}/>
+      <Route path="/movie/:id" element={<MovieDetail/>}/>
       <Route path="/login" element={<Login/>}/>
       <Route path="/admin" element={<Admin/>}/>
       </Routes>
