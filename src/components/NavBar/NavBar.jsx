@@ -1,16 +1,18 @@
 import React from 'react'
-import {Navigate, NavLink} from "react-router-dom"
+import {Navigate, NavLink, useNavigate} from "react-router-dom"
 import SearchBar from '../SearchBar/SearchBar';
 //logo de la app
 import "./NavBar.scss"
 
 export default function NavBar(){
+  
+
     let activeClassName = "active-link";
     return (
         <div>
         <nav className="navbar navbar-dark  fixed-top">
   <div className="container-fluid">
-    <a className="navbar-brand" href="/">WAVEFLIX</a>
+    <NavLink to= "/movie" className="navbar-brand" >WAVEFLIX</NavLink>
    <SearchBar/>
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon"></span>
