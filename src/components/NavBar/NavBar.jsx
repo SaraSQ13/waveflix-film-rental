@@ -12,7 +12,7 @@ export default function NavBar(){
         <div>
         <nav className="navbar navbar-dark  fixed-top">
   <div className="container-fluid">
-    <NavLink to= "/movie" className="navbar-brand" >WAVEFLIX</NavLink>
+    <NavLink to= "/" className="navbar-brand" >WAVEFLIX</NavLink>
    <SearchBar/>
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
       <span className="navbar-toggler-icon"></span>
