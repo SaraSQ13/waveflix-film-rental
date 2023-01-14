@@ -10,14 +10,14 @@ import SearchBar from '../../components/SearchBar/SearchBar'
 export function Home(){
     //hooks
     const [movies, setMovies] = useState([]);
-    const [page, setPage] = useState(1);
-    const [total_pages, setTotal_Pages] = useState(1);
+    //const [page, setPage] = useState(1);
+    //const [total_pages, setTotal_Pages] = useState(1);
    // const [genre, setGenre] = useState([]);
 
 
     useEffect(()=>{
-        getPopularMovies(page)
-    }, [page])
+        getPopularMovies()
+    }, [])
 
    // useEffect(()=>{
      //   getMovieGenre(genre)
@@ -25,11 +25,11 @@ export function Home(){
 
     
     //function
-    const getPopularMovies = async (page) =>{
+    const getPopularMovies = async () =>{
         try{
-            const res = await FilmRentalService.getPopularMovies(page)
+            const res = await FilmRentalService.getPopularMovies()
             setMovies(res)
-            setTotal_Pages(res.data.total_pages)
+            
             
         } catch (error){
             console.log(error.message || error);

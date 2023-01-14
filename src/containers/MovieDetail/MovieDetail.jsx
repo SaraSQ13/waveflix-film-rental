@@ -30,7 +30,7 @@ export default function MovieDetail() {
           <div
             className="backdrop-background"
             style={{
-              backgroundImage: `url(http://localhost:3000/w1280${movie.backdrop_path})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
             }}
           ></div>
           <div className="container pt-5 pb-5">

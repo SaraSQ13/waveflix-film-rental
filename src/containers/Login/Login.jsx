@@ -7,7 +7,7 @@ import "./Login.scss";
 
 export default function Login() {
   const initialValues = {
-    emial: "",
+    email: "",
     password: "",
   };
 
@@ -63,7 +63,7 @@ export default function Login() {
   };
   return (
     <div>
-      <div className="container pt-5 col-lg-3 m-auto">
+      <div className="container pt-5 col-lg m-auto">
         <h2>Login</h2>
        
         <form className="text-start" noValidate onSubmit={handleSubmit}>
