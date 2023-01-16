@@ -1,39 +1,47 @@
-import { useState } from 'react'
-import './App.scss'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Routes,
-  Router,
-  BrowserRouter,
-  Link,
-  createRoutesFromElements,
-  Navigate,
-} from "react-router-dom";
-import { Home } from './containers/Home/Home'
-import { Header } from './components/Header/Header';
-import Login from './containers/Login/Login';
-import Admin from './containers/Admin/Admin';
-import MovieDetail from './containers/MovieDetail/MovieDetail';
+import { createContext, useEffect, useState } from "react";
+import "./App.scss";
+import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import { Home } from "./containers/Home/Home";
+import { Header } from "./components/Header/Header";
+import Login from "./containers/Login/Login";
+import Admin from "./containers/Admin/Admin";
+import MovieDetail from "./containers/MovieDetail/MovieDetail";
+import Register from "./containers/Register/Register";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+
+export const AuthContext = createContext({
+  isAuth: false,
+  token: "",
+  setAuth: () => {},
+});
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [auth, setAuth] = useState({ isAuth: false, token: "" });
 
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Header/>
-      <Routes>
-      <Route path="/" element={<Navigate to= "/movie"/>}/>
-      <Route path="/movie" element={<Home/>}/>
-      <Route path="/movie/:id" element={<MovieDetail/>}/>
-      <Route path="/login" element={<Login/>}/>
-      <Route path="/admin" element={<Admin/>}/>
-      </Routes>
-      </BrowserRouter>
-       
-    </div>
-  )
+    <AuthContext.Provider value={{ auth, setAuth }}>
+      <div className="App">
+        <BrowserRouter>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Navigate to="/movie" />} />
+            <Route path="/movie" element={<Home />} />
+            <Route path="/movie/:id" element={<MovieDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute>
+                  <Admin />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </AuthContext.Provider>
+  );
 }
 
-export default App
+export default App;

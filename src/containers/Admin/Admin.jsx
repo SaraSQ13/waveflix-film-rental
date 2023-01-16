@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import UserService from "../../_services/UserService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { Navigate, useNavigate } from "react-router-dom";
+import "./Admin.scss"
+
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -9,13 +11,13 @@ export default function Admin() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     getAllUsers(token);
-  },[]);
+  }, []);
 
   const getAllUsers = async (token) => {
     try {
       const res = await UserService.getAllUsers(token);
       setUsers(res.data.data);
-      console.log(res.data.data)
+      console.log(res.data.data);
     } catch (error) {
       console.log(error.message || error);
     }
@@ -27,7 +29,7 @@ export default function Admin() {
   };
 
   return (
-    <div>
+    <div className= "container-admin">
       <h2>Admin panel</h2>
       <div>
         {users.map((user) => (

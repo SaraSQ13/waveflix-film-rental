@@ -37,7 +37,7 @@ export default function MovieDetail() {
             <div className="row">
               <div className="col-md-4">
                 <img
-                  src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w1280/${movie.poster_path}`}
                   className="img-fluid mb-4 mb-md-0"
                   alt="..."
                 />

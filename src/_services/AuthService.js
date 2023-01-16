@@ -20,4 +20,8 @@ AuthService.register = async (user) => {
   });
 };
 
+AuthService.validateToken = async (token) => {
+  return await axios.post(authApiUrl + "/validate-token", { token });
+};
+
 export default AuthService;
