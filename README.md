@@ -5,12 +5,11 @@
 
 <h3 align="center">WAVEFLIX film rental</h3>
 
-
-
 ---
 
 ![home](./src/assets/captura-home.png)
-    <br> 
+<br>
+
 </p>
 
 ## 📝 Table of Contents
@@ -22,18 +21,15 @@
 - [Built Using](#built_using)
 - [Authors](#authors)
 
-
 ## 🧐 About <a name = "about"></a>
 
-App made with React that you can register, sign up and search a film, get details and rental. 
+App made with React that you can register, sign up and search a film, get details and rental.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-
-
 
 ```
 npm i
@@ -43,14 +39,9 @@ npm i
 
 how to get a development env running.
 
-
 ```
 npm run dev
 ```
-
-
-
-
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -69,6 +60,4 @@ Add additional notes about how to deploy this on a live system.
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@SaraSQ13](https://github.com/SaraSQ13) 
-
-
+- [@SaraSQ13](https://github.com/SaraSQ13)

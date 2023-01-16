@@ -8,25 +8,25 @@ import React from "react";
 import "./SearchBar.scss";
 
 export default function SearchBar() {
-//   const [query, setQueryState] = useState("");
-//   const dispatch = useDispatch();
-//   const { status, results } = useSelector((state) => state.search);
+  //   const [query, setQueryState] = useState("");
+  //   const dispatch = useDispatch();
+  //   const { status, results } = useSelector((state) => state.search);
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     dispatch(setQuery(query));
-//     dispatch(search(query));
-//   };
+  //   const handleSubmit = (e) => {
+  //     e.preventDefault();
+  //     dispatch(setQuery(query));
+  //     dispatch(search(query));
+  //   };
 
   return (
     <div>
-      <form  className=" d-flex mt-3" role="search"> 
-      {/* onSubmit={handleSubmit} */}
+      <form className=" d-flex mt-3" role="search">
+        {/* onSubmit={handleSubmit} */}
         <input
           className="form-control me-2"
           type="text"
-        //   value={query}
-        //   onChange={(e) => setQueryState.apply(e.target.value)}
+          //   value={query}
+          //   onChange={(e) => setQueryState.apply(e.target.value)}
           placeholder="Título de la película"
           aria-label="Search"
         />

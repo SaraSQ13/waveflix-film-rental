@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import UserService from "../../_services/UserService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { Navigate, useNavigate } from "react-router-dom";
-import "./Admin.scss"
-
+import "./Admin.scss";
 
 export default function Admin() {
   const navigate = useNavigate();
@@ -29,7 +28,7 @@ export default function Admin() {
   };
 
   return (
-    <div className= "container-admin">
+    <div className="container-admin">
       <h2>Admin panel</h2>
       <div>
         {users.map((user) => (

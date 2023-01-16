@@ -1,6 +1,3 @@
-
-
-
 export const validateLoginFormValues = (formValues) => {
   const errors = {};
   const emailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -21,5 +18,3 @@ export const validateLoginFormValues = (formValues) => {
 
   return errors;
 };
-
-

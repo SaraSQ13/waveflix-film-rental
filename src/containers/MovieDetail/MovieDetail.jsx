@@ -15,13 +15,12 @@ export default function MovieDetail() {
   const getSingleMovie = async (id) => {
     try {
       const res = await FilmRentalService.getSingleMovie(id);
-      console.log(res.data.data)
+      console.log(res.data.data);
       setMovie(res.data.data);
     } catch (error) {
       console.log(error.message || error);
     }
   };
-
 
   return (
     <>
@@ -44,10 +43,7 @@ export default function MovieDetail() {
               </div>
               <div className="col-md-8 text-start">
                 <h1 className="h1 fw-bold  mb-3">
-                  {movie.title}{" "}
-                  <span className="fw-lighter">
-                    
-                  </span>
+                  {movie.title} <span className="fw-lighter"></span>
                 </h1>
                 <div className="mb-4">{`(${movie.original_language.toUpperCase()}) ${
                   movie.release_date
