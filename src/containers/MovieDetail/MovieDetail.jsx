@@ -1,12 +1,14 @@
 import "./MovieDetail.scss";
 import React, { useState, useEffect } from "react";
 import { FilmRentalService } from "../../_services/FilmRentalService";
-
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import UserService from "../../_services/UserService";
 
 export default function MovieDetail() {
+  const navigate = useNavigate;
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
+  // const [rentedMovies, setRentedMovies] = useState([]);
 
   useEffect(() => {
     getSingleMovie(id);
@@ -22,6 +24,29 @@ export default function MovieDetail() {
     }
   };
 
+  // const handleRent = async (id) => {
+  //   const res = await UserService.getMovieSingleUser(id);
+  //   setRentedMovies(res.data.data);
+  //   navigate(`/users`);
+  // };
+
+  // const handleRentMovie = async () => {
+  //   try {
+  //     const res = await UserService.rentMovie(movie);
+  //     console.log(res);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   navigate(`/users/${id}`);
+  // };
+
+  const handleRentMovie = async () => {
+    const userId = sessionStorage.getItem("userId");
+    console.log(userId);
+    console.log(id)
+    await UserService.rentMovie(userId, id);
+    navigate("/movies");
+  };
   return (
     <>
       {movie.id && (
@@ -51,6 +76,12 @@ export default function MovieDetail() {
                 <div className="mb-4 vote-average">{movie.vote_average}</div>
                 <h5 className="fw-bold">Overview</h5>
                 <p className="fs-5">{movie.overview}</p>
+                <div>
+                  <button onClick={handleRentMovie}>Alquilar</button>
+                </div>
+                {/* <button className="button" onClick={() => handleRent(rentedMovies.id)}>
+                  Alquilar
+                </button> */}
               </div>
             </div>
           </div>

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import UserService from "../../_services/UserService";
 import TokenStorageService from "../../_services/TokenStorageService";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, NavLink, useNavigate } from "react-router-dom";
 import "./Admin.scss";
 
 export default function Admin() {
   const navigate = useNavigate();
   const token = TokenStorageService.getToken();
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     getAllUsers(token);
   }, []);
@@ -22,20 +23,53 @@ export default function Admin() {
     }
   };
 
-  const handleLogout = () => {
-    TokenStorageService.logOut();
-    navigate("/");
+  //handle detele user
+  const handleDelete = async (userToDelete) => {
+    const res = await UserService.deleteUser(userToDelete);
+    console.log(res);
+    await getAllUsers(token);
+    console.log(users);
   };
 
   return (
     <div className="container-admin">
-      <h2>Admin panel</h2>
+      <h2 className="title-admin">ADMIN PANEL</h2>
       <div>
-        {users.map((user) => (
-          <div key={user._id}>{user.name}</div>
-        ))}
+        <div className="list-group">
+          <a
+            href="#"
+            className="list-group-item list-group-item-action active"
+            aria-current="true"
+          >
+            Users
+          </a>
+
+          <NavLink
+            to="/user/:name"
+            className="list-group-item list-group-item-action"
+          >
+            {users.map((user) => (
+              <div key={user._id}>
+                <ol>
+                  <li>{user.name}</li>
+                  <li>{user.email}</li>
+                  <li>{user.movie}</li>
+                </ol>
+                <div className="admin-buttons">
+                  <button
+                    onClick={() => {
+                      handleDelete(users);
+                    }}
+                    className="delete-user"
+                  >
+                    borrar
+                  </button>
+                </div>
+              </div>
+            ))}
+          </NavLink>
+        </div>
       </div>
-      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 }

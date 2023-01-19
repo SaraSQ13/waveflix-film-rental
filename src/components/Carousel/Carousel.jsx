@@ -1,6 +1,9 @@
 import "./Carousel.scss";
 import Carousel from "react-spring-3d-carousel";
 
+
+
+
 const slides = [
   {
     key: uuidv4(),

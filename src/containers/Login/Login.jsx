@@ -4,21 +4,22 @@ import { json, useNavigate } from "react-router-dom";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { validateLoginFormValues } from "../../_helpers/form-utilities";
 import "./Login.scss";
-import { AuthContext } from "../../App";
 import Background from "../../components/Background/Background";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../features/auth/authSlice";
 
 export default function Login() {
-  const { auth, setAuth } = React.useContext(AuthContext);
+  //const { auth, setAuth } = React.useContext(AuthContext);
+
+  //hooks
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     email: "",
     password: "",
   };
-
-  //hooks
-  const navigate = useNavigate();
-
-  const [formValues, setFormValues] = useState({ initialValues });
+  const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
@@ -31,18 +32,25 @@ export default function Login() {
     //verificar que no hay error
     if (Object.keys(formErrors).length == 0 && isSubmit) {
       console.log("LOGIN...");
-      login(credentials);
+      handleLogin(credentials);
     }
   }, [isSubmit, formErrors]);
 
-  const login = async (credentials) => {
+  const handleLogin = async (credentials) => {
     try {
       const res = await AuthService.login(credentials);
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
-      setAuth({ isAuth: true, token: res.data.token });
-      console.log("isAuth", auth);
-      navigate("/admin"); //aqui hariamos un switch para que depende del rol que tenga vaya a una pantalla o a otra.
+      sessionStorage.setItem("userId", res.data.id);
+      dispatch(login(res.data.user));
+
+      if (res.data.role == "super_admin") {
+        navigate("/admin");
+      } else if (res.data.role == "user") {
+        navigate("/users");
+      }
+
+      //navigate("/admin"); //aqui hariamos un switch para que depende del rol que tenga vaya a una pantalla o a otra.
     } catch (error) {
       console.log(error);
     }
@@ -59,9 +67,7 @@ export default function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); //para que no haga por defecto el evento que tiene que hacer ese formulario
-    const { email, password } = e.target.elements;
 
-    // dispatch(login(email.value));
     setFormErrors(validateLoginFormValues(formValues));
     setIsSubmit(true);
     //verificar errores

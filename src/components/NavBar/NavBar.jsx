@@ -1,16 +1,21 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { AuthContext } from "../../App";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { logout } from "../../features/auth/authSlice";
 import SearchBar from "../SearchBar/SearchBar";
 //logo de la app
 import "./NavBar.scss";
 
 export default function NavBar() {
-  const { auth } = React.useContext(AuthContext);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state)=> state.auth.user);
 
-  // const email = useSelector((state) => state.auth.email);
+ 
   const handleLogout = () => {
     TokenStorageService.logOut();
+    dispatch(logout());
     navigate("/");
   };
 
@@ -20,13 +25,17 @@ export default function NavBar() {
         <NavLink to="/" className="navbar-brand">
           WAVEFLIX
         </NavLink>
-        <SearchBar />
+       
         <nav>
-          {auth.isAuth ? (
+          {isLoggedIn ? (
             <>
-              <p>Welcome</p>
+              <p>Welcome, {user}</p>
 
-              <button onClick={handleLogout}>Logout</button>
+              <button>
+                  <NavLink to= "/movie" onClick={handleLogout} className="nav-link">
+                      Logout
+                    </NavLink>
+              </button>
             </>
           ) : (
             <button onClick={() => dispatch(login())}>Login</button>
@@ -81,15 +90,15 @@ export default function NavBar() {
                   Alquileres
                 </NavLink>
               </li>
-              {auth.isAuth ? (
+              {isLoggedIn ? (
                 <>
                   <li className="nav-item">
                     <NavLink to="/profile" className="nav-link">
-                      TestAdmin
+                      Sara, Admin
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink onClick={handleLogout} className="nav-link">
+                    <NavLink to= "/movie" onClick={handleLogout} className="nav-link">
                       Logout
                     </NavLink>
                   </li>

@@ -8,39 +8,31 @@ import Admin from "./containers/Admin/Admin";
 import MovieDetail from "./containers/MovieDetail/MovieDetail";
 import Register from "./containers/Register/Register";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-
-export const AuthContext = createContext({
-  isAuth: false,
-  token: "",
-  setAuth: () => {},
-});
+import User from "./containers/UserDetail/UserDetail";
 
 function App() {
-  const [auth, setAuth] = useState({ isAuth: false, token: "" });
-
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
-      <div className="App">
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Navigate to="/movie" />} />
-            <Route path="/movie" element={<Home />} />
-            <Route path="/movie/:id" element={<MovieDetail />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route
-              path="/admin"
-              element={
-                <PrivateRoute>
-                  <Admin />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </AuthContext.Provider>
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/movie" />} />
+          <Route path="/movie" element={<Home />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/users" element={<User />} />
+          <Route
+            path="/admin"
+            element={
+              //<PrivateRoute>
+                <Admin />
+              //</PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

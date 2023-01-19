@@ -5,18 +5,22 @@ export const authSlice = createSlice({
 
   initialState: {
     isLoggedIn: false,
-    email: {},
+    user: {},
+    movies: [],
   },
 
   reducers: {
     login: (state, action) => {
       state.isLoggedIn = true;
-      state.email = action.payload;
+      state.user = action.payload;
     },
     logout: (state) => {
       state.isLoggedIn = false;
-      state.email = {};
+      state.user = null;
     },
+    updateMovies: (state,action) =>{
+      state.movies= action.payload;
+    }
   },
 });
 

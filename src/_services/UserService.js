@@ -15,4 +15,50 @@ UserService.getAllUsers = async (token) => {
   return await axios.get(apiUrl, config);
 };
 
+UserService.getMoviesFromUser = async (name) => {
+  const apiUrl = `${enviroment.BASE_URL}/users/${name}`;
+  const res = await axios.get(apiUrl);
+  return res.data;
+}
+
+// UserService.getMovieSingleUser = async (id) => {
+//   const apiUrl = `${enviroment.BASE_API_URL}/users/${id}`;
+//   const res = await axios.get(apiUrl);
+//   return res.data;
+// };
+
+UserService.rentMovie = async (userId, movieId) => {
+  try {
+    const apiURL = `${enviroment.BASE_API_URL}/users/users/${userId}/rent/${movieId}`;
+    const res = await axios.patch(apiURL, movieId);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+UserService.deleteMovie = async (userId, movieId) => {
+  try {
+    const apiURL = `${enviroment.BASE_API_URL}/users/users/${userId}/delete/${movieId}`;
+    const res = await axios.patch(apiURL, movieId);
+
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+UserService.deleteUser = async (user) => {
+  try{
+     const apiUrl = `${enviroment.BASE_API_URL}/users/users/delete/${user._id}`;
+     const res = await axios.delete(apiUrl);
+
+     return res.data;
+
+  }catch (error){
+     console.log(error);
+
+  }
+};
+
 export default UserService;

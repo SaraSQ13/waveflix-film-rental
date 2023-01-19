@@ -8,6 +8,7 @@ import "./Register.scss";
 export default function Register() {
   // const dispatch = useDispatch();
   const initialValues = {
+    name: "",
     email: "",
     password: "",
   };
@@ -39,7 +40,7 @@ export default function Register() {
       const res = await AuthService.register(credentials);
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
-      navigate("/admin"); //aqui hariamos un switch para que depende del rol que tenga vaya a una pantalla o a otra.
+      navigate("/login"); //aqui hariamos un switch para que depende del rol que tenga vaya a una pantalla o a otra.
     } catch (error) {
       console.log(error);
     }
