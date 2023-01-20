@@ -7,8 +7,8 @@ import Login from "./containers/Login/Login";
 import Admin from "./containers/Admin/Admin";
 import MovieDetail from "./containers/MovieDetail/MovieDetail";
 import Register from "./containers/Register/Register";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import User from "./containers/UserDetail/UserDetail";
+import UserProfile from "./containers/UserDetail/UserDetail";
+
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Route path="/movie/:id" element={<MovieDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/users" element={<User />} />
+          <Route path="/userDetails" element={<UserProfile />} />
           <Route
             path="/admin"
             element={

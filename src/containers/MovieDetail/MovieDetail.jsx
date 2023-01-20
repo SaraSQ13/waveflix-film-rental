@@ -3,11 +3,15 @@ import React, { useState, useEffect } from "react";
 import { FilmRentalService } from "../../_services/FilmRentalService";
 import { useNavigate, useParams } from "react-router-dom";
 import UserService from "../../_services/UserService";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MovieDetail() {
   const navigate = useNavigate;
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
+  const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   // const [rentedMovies, setRentedMovies] = useState([]);
 
   useEffect(() => {
@@ -40,12 +44,14 @@ export default function MovieDetail() {
   //   navigate(`/users/${id}`);
   // };
 
-  const handleRentMovie = async () => {
-    const userId = sessionStorage.getItem("userId");
-    console.log(userId);
-    console.log(id)
-    await UserService.rentMovie(userId, id);
-    navigate("/movies");
+  const handleRentMovie =  () => {
+    // const userId = sessionStorage.getItem("userId");
+    // console.log(userId);
+    // console.log(id)
+    // await UserService.rentMovie(userId, id);
+    // navigate("/movies");
+    console.log(isLoggedIn);
+    console.log(user);
   };
   return (
     <>
@@ -79,9 +85,6 @@ export default function MovieDetail() {
                 <div>
                   <button onClick={handleRentMovie}>Alquilar</button>
                 </div>
-                {/* <button className="button" onClick={() => handleRent(rentedMovies.id)}>
-                  Alquilar
-                </button> */}
               </div>
             </div>
           </div>

@@ -16,21 +16,17 @@ UserService.getAllUsers = async (token) => {
 };
 
 UserService.getMoviesFromUser = async (name) => {
-  const apiUrl = `${enviroment.BASE_URL}/users/${name}`;
+  const apiUrl = `${enviroment.BASE_API_URL}/users/users/${name}`;
   const res = await axios.get(apiUrl);
   return res.data;
 }
 
-// UserService.getMovieSingleUser = async (id) => {
-//   const apiUrl = `${enviroment.BASE_API_URL}/users/${id}`;
-//   const res = await axios.get(apiUrl);
-//   return res.data;
-// };
 
-UserService.rentMovie = async (userId, movieId) => {
+
+UserService.rentMovie = async (userId, movie) => {
   try {
-    const apiURL = `${enviroment.BASE_API_URL}/users/users/${userId}/rent/${movieId}`;
-    const res = await axios.patch(apiURL, movieId);
+    const apiURL = `${enviroment.BASE_API_URL}/users/users/${userId}/rent`;
+    const res = await axios.patch(apiURL, movie);
 
     return res.data;
   } catch (error) {

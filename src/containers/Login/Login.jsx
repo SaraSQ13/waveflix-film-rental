@@ -42,11 +42,12 @@ export default function Login() {
       console.log(res.data);
       TokenStorageService.saveToken(res.data.token);
       sessionStorage.setItem("userId", res.data.id);
+      console.log(res.data.user)
       dispatch(login(res.data.user));
 
-      if (res.data.role == "super_admin") {
+      if (res.data.user.role == "super_admin") {
         navigate("/admin");
-      } else if (res.data.role == "user") {
+      } else if (res.data.user.role == "user") {
         navigate("/users");
       }
 

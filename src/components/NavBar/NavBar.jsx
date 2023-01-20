@@ -29,7 +29,7 @@ export default function NavBar() {
         <nav>
           {isLoggedIn ? (
             <>
-              <p>Welcome, {user}</p>
+              <p>Welcome, {user.name}</p>
 
               <button>
                   <NavLink to= "/movie" onClick={handleLogout} className="nav-link">
@@ -38,7 +38,7 @@ export default function NavBar() {
               </button>
             </>
           ) : (
-            <button onClick={() => dispatch(login())}>Login</button>
+            ""
           )}
         </nav>
 
