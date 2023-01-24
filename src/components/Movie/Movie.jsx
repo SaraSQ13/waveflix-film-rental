@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import UserService from "../../_services/UserService";
 import "./Movie.scss";
@@ -38,12 +37,6 @@ function Movie({ movie }) {
       <button className="button" onClick={handleRentMovie}>
         Alquilar
       </button>
-      {/* //   <button onClick={handleRent}>Alquilar prueba</button>
-    // <ul>
-    //   {rentedMovies.map(movie => (
-    //     <li key={movie.id}>{movie.title}</li>
-    //   ))}
-    // </ul>  */}
     </div>
   );
 }

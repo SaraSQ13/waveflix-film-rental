@@ -31,9 +31,11 @@ export default function UserProfile() {
   return (
     <div>
       <h2>Hola, {user.name}</h2>
+      <h2>Estas son tus películas alquiladas:</h2>
       {moviesUser.map((movie) => (
         <div className="movie-rent" key={movie._id}>
           {movie.title}
+          
           <img
             src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
             className="img-fluid mb-4 mb-md-0"

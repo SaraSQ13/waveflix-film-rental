@@ -45,17 +45,17 @@ export default function Admin() {
             <li>Email: {user.email}</li>
             <li>Rol: {user.role}</li>
             <li>{userRentMovies(user.movies)}</li>
-          </ol>
-
-          <div className="admin-buttons">
             <button
               onClick={() => {
                 handleDelete(users.user);
               }}
               className="delete-user"
             >
-              borrar
+              Borrar usuario
             </button>
+          </ol>
+
+          <div className="admin-buttons">
           </div>
         </div>
       ))}
