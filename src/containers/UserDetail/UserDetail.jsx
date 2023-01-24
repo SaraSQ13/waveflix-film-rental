@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { updateMovies } from "../../features/auth/authSlice";
 import UserService from "../../_services/UserService";
+import "./UserDetail.scss";
 
 export default function UserProfile() {
   const user = useSelector((state) => state.auth.user);
@@ -11,25 +12,34 @@ export default function UserProfile() {
   const moviesUser = useSelector((state) => state.auth.movies);
   const navigate = useNavigate();
 
-  if (isLoggedIn) {
-    try {
-      UserService.getMoviesFromUser(user.name).then((res) => {
-        console.log(res.data.movies);
-        dispatch(updateMovies([...res.data.movies]));
-      });
-    } catch (error) {
-      console.log(error);
+  useEffect(() => {
+    if (isLoggedIn) {
+      try {
+        UserService.getMoviesFromUser(user.name).then((res) => {
+          console.log(res.data.movies);
+          dispatch(updateMovies([...res.data.movies]));
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("Necesitas iniciar sesión");
+      navigate("/login");
     }
-  } else {
-    alert("Necesitas iniciar sesión");
-    navigate("/login");
-  }
+  }, []);
 
   return (
     <div>
       <h2>Hola, {user.name}</h2>
       {moviesUser.map((movie) => (
-        <div key={movie._id}>{movie.title}</div>
+        <div className="movie-rent" key={movie._id}>
+          {movie.title}
+          <img
+            src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`}
+            className="img-fluid mb-4 mb-md-0"
+            alt="..."
+          />
+        </div>
       ))}
     </div>
   );

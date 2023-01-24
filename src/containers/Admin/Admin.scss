@@ -7,3 +7,17 @@
 .list-group-item{
     background-color: rgb(27, 175, 177);
 }
+
+.container-admin{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    
+}
+
+.card{
+    color: black;
+    gap: 3em;
+}

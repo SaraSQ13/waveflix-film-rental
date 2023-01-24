@@ -30,46 +30,35 @@ export default function Admin() {
     await getAllUsers(token);
     console.log(users);
   };
-
+  const userRentMovies = (movies) => {
+    return movies.map((movie) => {
+      return <img src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} alt="" />;
+    });
+  };
+  
   return (
-    <div className="container-admin">
-      <h2 className="title-admin">ADMIN PANEL</h2>
-      <div>
-        <div className="list-group">
-          <a
-            href="#"
-            className="list-group-item list-group-item-action active"
-            aria-current="true"
-          >
-            Users
-          </a>
+    <div className="card">
+      {users.map((user) => (
+        <div className= "card" key={user._id}>
+          <ol className="card-body">
+            <li className= "card-title">Usuario: {user.name}</li>
+            <li>Email: {user.email}</li>
+            <li>Rol: {user.role}</li>
+            <li>{userRentMovies(user.movies)}</li>
+          </ol>
 
-          <NavLink
-            to="/user/:name"
-            className="list-group-item list-group-item-action"
-          >
-            {users.map((user) => (
-              <div key={user._id}>
-                <ol>
-                  <li>{user.name}</li>
-                  <li>{user.email}</li>
-                  <li>{user.movie}</li>
-                </ol>
-                <div className="admin-buttons">
-                  <button
-                    onClick={() => {
-                      handleDelete(users);
-                    }}
-                    className="delete-user"
-                  >
-                    borrar
-                  </button>
-                </div>
-              </div>
-            ))}
-          </NavLink>
+          <div className="admin-buttons">
+            <button
+              onClick={() => {
+                handleDelete(users.user);
+              }}
+              className="delete-user"
+            >
+              borrar
+            </button>
+          </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 }
